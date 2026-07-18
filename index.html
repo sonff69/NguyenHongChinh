@@ -32,7 +32,7 @@
         }
 
         body {
-            font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #0b0813;
             background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('back.jpg');
             background-size: cover;
@@ -46,7 +46,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Particle Swirl Background Canvas */
+        /* Swirling Particle Background Canvas */
         #space-canvas {
             position: fixed;
             top: 0;
@@ -444,33 +444,34 @@
             box-shadow: 0 4px 15px rgba(157, 78, 221, 0.25);
         }
 
-        /* Detailed Assignment Panels */
+        /* Detailed Assignment Panels - Fixed Absolute Position Clipping Bug */
         .tabs-viewport {
+            width: 100%;
             position: relative;
-            min-height: 600px;
         }
 
         .assignment-panel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            display: grid;
+            display: none; /* Changed from position:absolute to display:none to fix overflow clipping completely */
             grid-template-columns: 1.15fr 1fr;
             gap: 35px;
-            pointer-events: none;
+            width: 100%;
         }
 
         .assignment-panel.active {
-            position: relative;
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+            display: grid;
+            animation: tabFadeIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
             pointer-events: auto;
+        }
+
+        @keyframes tabFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .assignment-meta {
@@ -693,10 +694,13 @@
             font-size: 0.8rem;
         }
 
+        /* Fixed file icon horizontal/vertical stretching completely */
         .files-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            grid-auto-rows: max-content;
             gap: 15px;
+            align-items: start;
             flex: 1;
         }
 
@@ -711,6 +715,8 @@
             border-radius: 4px;
             border: 1px solid transparent;
             transition: var(--transition-smooth);
+            height: fit-content;
+            align-self: start;
         }
 
         .file-icon:hover {
@@ -764,11 +770,12 @@
             flex: 1;
             background: #16141e;
             padding: 20px;
+            padding-bottom: 40px; /* Added padding bottom to prevent lists cut-off */
             display: flex;
             flex-direction: column;
             gap: 15px;
             overflow-y: auto;
-            max-height: 480px;
+            max-height: 500px;
         }
 
         .search-bar-widget {
@@ -1168,7 +1175,7 @@
             align-items: start;
         }
 
-        .reflection-narrative {
+        .reflection-narrative glass-panel {
             padding: 40px;
             display: flex;
             flex-direction: column;
@@ -1423,7 +1430,7 @@
 
             <div class="tabs-viewport">
                 <!-- BÀI 1 PANEL -->
-                <div id="proj1" class="assignment-panel active glass-panel">
+                <div id="proj1" class="assignment-panel active">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 1 của mục 1.4</span>Thao Tác Cơ Bản Với Tệp Tin Và Thư Mục</h3>
                         <div class="meta-pills">
@@ -1503,7 +1510,7 @@
                 </div>
 
                 <!-- BÀI 2 PANEL -->
-                <div id="proj2" class="assignment-panel glass-panel">
+                <div id="proj2" class="assignment-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 2 của mục 2.4</span>Tìm Kiếm & Đánh Giá Thông Tin Học Thuật Bằng Các Toán Tử Nâng Cao</h3>
                         <div class="meta-pills">
@@ -1570,7 +1577,7 @@
                 </div>
 
                 <!-- BÀI 3 PANEL -->
-                <div id="proj3" class="assignment-panel glass-panel">
+                <div id="proj3" class="assignment-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 2 của mục 3.4</span>Viết Prompt Hiệu Quả Cho Các Tác Vụ Học Tập</h3>
                         <div class="meta-pills">
@@ -1634,7 +1641,7 @@
                 </div>
 
                 <!-- BÀI 4 PANEL -->
-                <div id="proj4" class="assignment-panel glass-panel">
+                <div id="proj4" class="assignment-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 3 của mục 4.4</span>Sử Dụng Công Cụ Hợp Tác Trực Tuyến Cho Dự Án Nhóm</h3>
                         <div class="meta-pills">
@@ -1692,7 +1699,7 @@
                 </div>
 
                 <!-- BÀI 5 PANEL -->
-                <div id="proj5" class="assignment-panel glass-panel">
+                <div id="proj5" class="assignment-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 2 của mục 5.4</span>Sử Dụng Công Cụ AI Tạo Sinh Để Hỗ Trợ Sáng Tạo Nội Dung</h3>
                         <div class="meta-pills">
@@ -1762,7 +1769,7 @@
                 </div>
 
                 <!-- BÀI 6 PANEL -->
-                <div id="proj6" class="assignment-panel glass-panel">
+                <div id="proj6" class="assignment-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 4 của mục 6.4</span>Sử Dụng AI Có Trách Nhiệm Trong Học Tập Và Nghiên Cứu</h3>
                         <div class="meta-pills">
@@ -2020,7 +2027,7 @@
         }
         setTimeout(runTyping, 800);
 
-        /* Tab Switch Control with slide transition */
+        /* Tab Switch Control with slide transition - Fixed Absolute Height Overlap completely */
         function switchTabs(evt, tabId) {
             const panels = document.getElementsByClassName('assignment-panel');
             for (let i = 0; i < panels.length; i++) {
