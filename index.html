@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio - Nguyễn Hồng Chinh</title>
-    <!-- Google Fonts (Be Vietnam Pro hỗ trợ hiển thị tiếng Việt hoàn hảo) & Font Awesome Icons -->
+    <!-- Google Fonts (Be Vietnam Pro hỗ trợ ký tự tiếng Việt hoàn hảo) & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -23,7 +23,7 @@
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Reset & Global Styles */
+        /* Reset & Global Styles với font chữ tiếng Việt hiển thị mượt mà */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -567,7 +567,7 @@
             font-size: 0.8rem;
         }
 
-        /* Interactive Visual Panels for Simulations */
+        /* Interactive Visual Panels for Simulations (Fixed Heights) */
         .assignment-interactive {
             background: rgba(11, 8, 19, 0.45);
             border-radius: 20px;
@@ -575,7 +575,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 550px; /* Fixed height to keep layout stable and elegant */
+            height: 550px; /* Fixed uniform height to prevent cropping and alignment bugs */
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
             position: relative;
         }
@@ -649,7 +649,7 @@
         .explorer-body {
             display: flex;
             flex: 1;
-            min-height: 380px;
+            min-height: 0; /* Important to enforce inner scrolling */
         }
 
         .explorer-sidebar {
@@ -660,6 +660,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            overflow-y: auto;
         }
 
         .sidebar-item {
@@ -683,6 +684,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            min-height: 0;
         }
 
         .main-breadcrumbs {
@@ -693,26 +695,31 @@
             font-size: 0.8rem;
         }
 
+        /* Fixed file wrapping grid to stop stretching bug */
         .files-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            grid-auto-rows: max-content; /* This prevents the row from stretching vertically! */
-            align-content: start; /* Align rows to the top */
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-content: flex-start;
+            padding: 10px;
             flex: 1;
+            overflow-y: auto;
         }
 
+        /* Fixed sizing properties to align file cards cleanly */
         .file-icon {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            text-align: center;
+            justify-content: center;
+            width: 90px;
+            height: 95px;
             padding: 8px;
-            border-radius: 4px;
+            border-radius: 8px;
             border: 1px solid transparent;
             transition: var(--transition-smooth);
+            cursor: pointer;
+            text-align: center;
         }
 
         .file-icon:hover {
@@ -722,6 +729,18 @@
 
         .file-icon i {
             font-size: 2rem;
+        }
+
+        .file-icon span {
+            font-size: 0.75rem;
+            word-break: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: #d1cfd6;
+            margin-top: 5px;
+            line-height: 1.2;
         }
 
         .file-icon.folder i { color: #f9c74f; }
@@ -769,8 +788,8 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            overflow-y: auto;
-            max-height: 480px;
+            overflow: hidden; /* Important to encapsulate dynamic result-lists */
+            height: calc(100% - 45px);
         }
 
         .search-bar-widget {
@@ -811,10 +830,14 @@
             border-color: var(--secondary-glow);
         }
 
+        /* Inner container with scrolling viewport to fix overlap bugs */
         .source-results {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 5px;
         }
 
         .source-item-card {
@@ -900,6 +923,8 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            overflow: hidden;
+            height: calc(100% - 45px);
         }
 
         .prompt-selector {
@@ -930,6 +955,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             flex: 1;
+            min-height: 0; /* Crucial block allowing children to compute overflow values and auto scroll */
         }
 
         .output-box {
@@ -942,7 +968,7 @@
             gap: 10px;
             font-size: 0.8rem;
             overflow-y: auto;
-            max-height: 250px;
+            height: 100%;
         }
 
         .output-box-header {
@@ -974,6 +1000,8 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            overflow: hidden;
+            height: calc(100% - 45px);
         }
 
         .collab-doc-editor {
@@ -985,8 +1013,8 @@
             font-family: 'Arial', sans-serif;
             font-size: 0.85rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-            max-height: 300px;
             overflow-y: auto;
+            min-height: 0;
         }
 
         .doc-edit-cursor {
@@ -1051,6 +1079,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            height: calc(100% - 45px);
         }
 
         .infographic-preview-layout {
@@ -1065,10 +1094,11 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             cursor: pointer;
             transition: var(--transition-smooth);
+            transform: scale(0.9); /* Rescale mockup bounds seamlessly to align with uniform height values */
         }
 
         .infographic-preview-layout:hover {
-            transform: scale(1.02);
+            transform: scale(0.92);
             box-shadow: 0 12px 30px rgba(78, 168, 222, 0.25);
         }
 
@@ -1115,7 +1145,9 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            justify-content: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+            height: calc(100% - 45px);
         }
 
         .pledge-checklist {
@@ -1706,11 +1738,10 @@
                             <p>Trải nghiệm chuyển đổi thông tin phân tích dạng văn bản thô thành các dạng biểu đạt trực quan cao (Infographic). Học cách kết hợp giữa năng lực thiết kế tự động của AI và tư duy tinh chỉnh thẩm mỹ của con người.</p>
                         </div>
                         <div class="detail-block">
-                            <h4>Mô tả tiến trình thiết kế (Chi tiết gấp đôi)</h4>
-                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Học liệu đầu vào:</strong> Kết quả tóm tắt thông tin từ Bài tập thực hành 3 được cấu trúc hóa chặt chẽ bao gồm 4 nhánh thông tin chính: Cá nhân hóa lộ trình học, Hệ thống chấm điểm tự động, Trợ lý gia sư thông minh, và Phân tích dự báo thành tích học sinh.</p>
-                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Cú pháp thiết kế (Canva AI Prompt):</strong> <code>"Modern infographic about AI in education, blue color theme, flat design, education and technology icons"</code>.</p>
-                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Lựa chọn thẩm mỹ học (Color & Elements):</strong> Sử dụng dải màu xanh công nghệ (Tech Blue) làm màu chủ đạo đại diện cho trí tuệ nhân tạo và môi trường số. Kết hợp các biểu tượng phẳng (flat icons) tối giản như hình mũ cử nhân, máy tính xách tay có dấu kiểm, chatbot thân thiện và biểu đồ phân tích phát triển.</p>
-                            <p style="font-size: 0.85rem; text-align: justify;"><strong>Quá trình hiệu đính thủ công (Human-in-the-loop):</strong> Do Canva AI sinh ra bố cục tự động đôi khi bị lệch khoảng cách và icon bị méo, mình đã tiến hành sắp xếp lại thủ công vị trí các biểu tượng; thay đổi font chữ chính sang font không chân (Sans-serif) tăng độ tinh giản; chỉnh sửa nội dung tiêu đề trực quan hơn; và quan trọng nhất là thêm ghi nhận nguồn học liệu nghiên cứu uy tín ở chân trang Infographic để đảm bảo độ chính xác học thuật.</p>
+                            <h4>Mô tả tiến trình thiết kế</h4>
+                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Chủ đề Infographic:</strong> AI in Education Today (Sử dụng dữ liệu thu thập được từ Bài tập 3).</p>
+                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Cú pháp Prompt Canva AI:</strong> <code>"Modern infographic about AI in education, blue color theme, flat design, education and technology icons"</code>.</p>
+                            <p style="font-size: 0.85rem; text-align: justify;"><strong>Quá trình can thiệp thủ công:</strong> Định vị và thay thế các vị trí biểu tượng không phù hợp; thiết lập và điều chỉnh lại hệ thống màu sắc để phân tách rõ rệt 4 vùng nội dung; tăng kích thước font chữ tiêu đề để gia tăng độ tương phản đọc; bổ sung chính xác nguồn học liệu nghiên cứu uy tín ở góc chân trang Infographic.</p>
                         </div>
                         <div class="detail-block">
                             <h4>Bài học kinh nghiệm rút ra</h4>
@@ -2094,13 +2125,10 @@
             { id: 1, title: "Social Media and Political Participation", author: "Boulianne (2020)", category: "youth", journal: "journal", rating: 5, citations: "Cực kỳ cao", publisher: "Taylor & Francis", desc: "Nghiên cứu học thuật chính thống chỉ ra mối tương quan tích cực giữa việc sử dụng mạng xã hội và khả năng cải thiện nhận thức chính trị của giới trẻ.", evaluation: "<strong>Đánh giá khoa học:</strong> Đăng trên tạp chí uy tín được bình duyệt nghiêm ngặt. Phân tích định lượng mạnh với mẫu dữ liệu thực nghiệm lớn.<br><br><strong>Ứng dụng học thuật:</strong> Cung cấp khung lý thuyết hoàn hảo chứng minh mạng xã hội hỗ trợ giảm rào cản thông tin cho đối tượng cử tri trẻ tuổi." },
             { id: 2, title: "Digital News Report 2023", author: "Reuters Institute (2023)", category: "youth", journal: "report", rating: 5, citations: "Rất cao (Báo cáo thực chứng)", publisher: "Reuters University Press", desc: "Cung cấp những lát cắt dữ liệu thực tế tinh lọc về xu hướng đọc tin tức trực tuyến của thế hệ trẻ.", evaluation: "<strong>Đánh giá khoa học:</strong> Báo cáo thường niên của viện nghiên cứu báo chí hàng đầu thế giới Reuters. Phương pháp điều tra đa quốc gia, độ tin cậy của dữ liệu là tuyệt đối.<br><br><strong>Ứng dụng học thuật:</strong> Khai thác các chỉ số thống kê thực tế về hành vi tiếp cận tin tức qua video ngắn (TikTok, Reels) của thế hệ Gen Z." },
             { id: 3, title: "Social Media Use in 2021", author: "Pew Research (2021)", category: "youth", journal: "report", rating: 4, citations: "Báo cáo uy tín cao", publisher: "Pew Research Center", desc: "Phân tích số liệu đồ họa toàn diện, nguồn dữ liệu mạnh tuy nhiên không phải là một bài báo tạp chí học thuật bình duyệt.", evaluation: "<strong>Đánh giá khoa học:</strong> Tổ chức khảo sát Pew Research Center nổi tiếng toàn cầu về tính khách quan. Dù không phải tạp chí học thuật hàn lâm, dữ liệu khảo sát có giá trị thực tiễn rất lớn.<br><br><strong>Ứng dụng học thuật:</strong> Cung cấp biểu đồ trực quan về tỷ lệ sử dụng các nền tảng mạng xã hội theo độ tuổi." },
-            { id: 4, title: "Networked Publics", author: "Boyd (2018)", category: "democracy", journal: "book", rating: 4, citations: "Nền tảng lý thuyết tốt", publisher: "Academic Monograph", desc: "Bản phân tích tuyệt vời tạo dựng cơ sở lý thuyết bền vững để hiểu về không gian hoạt động công cộng trên môi trường số của thanh thiếu niên.", evaluation: "<strong>Đánh giá khoa học:</strong> Sách chuyên khảo học thuật xuất bản bởi nhà in danh tiếng MIT Press. Sức ảnh hưởng lý thuyết bền vững qua nhiều năm.<br><br><strong>Ứng dụng học thuật:</strong> Giúp định nghĩa các khái niệm cốt lõi như 'không gian công cộng mạng' và hành vi tương tác nhóm trực tuyến." },
             { id: 5, title: "The Filter Bubble", author: "Pariser (2019)", category: "democracy", journal: "book", rating: 4, citations: "Sách chuyên khảo sâu", publisher: "Algorithm Analysis Press", desc: "Phân tích tác động của các thuật toán đề xuất ẩn đối với việc hạn chế góc nhìn đa chiều của người đọc trực tuyến.", evaluation: "<strong>Đánh giá khoa học:</strong> Sách lý thuyết đại chúng mang tính học thuật cao. Mô tả sắc bén cơ chế vận hành của thuật toán phân phối nội dung xã hội.<br><br><strong>Ứng dụng học thuật:</strong> Phân tích luận điểm về 'bong bóng lọc thông tin' khiến giới trẻ chỉ tiếp cận các nguồn tin một chiều phù hợp sở thích có sẵn." },
             { id: 6, title: "Youth and Digital Politics", author: "Theocharis (2021)", category: "youth", journal: "journal", rating: 5, citations: "Độ chính xác cao", publisher: "Elsevier", desc: "Sử dụng các mô hình nghiên cứu phương pháp rõ ràng, cụ thể và thống kê khách quan để chứng minh hành vi chính trị số.", evaluation: "<strong>Đánh giá khoa học:</strong> Đăng trên tạp chí thuộc nhà xuất bản danh giá Elsevier. Phương pháp phân tích mô hình thống kê đa biến có độ chính xác khoa học cao.<br><br><strong>Ứng dụng học thuật:</strong> Cung cấp mô hình phương pháp luận thực nghiệm để đo lường mức độ ảnh hưởng của tương tác ảo tới hành vi tham gia thực tế." },
             { id: 7, title: "Social Media and Democracy", author: "Tucker et al. (2018)", category: "democracy", journal: "journal", rating: 5, citations: "Được trích dẫn cực cao", publisher: "Oxford Academic", desc: "Công trình kinh điển đánh giá rủi ro lan truyền tin tức giả mạo và sự phân cực ý thức hệ trên các mạng xã hội lớn.", evaluation: "<strong>Đánh giá khoa học:</strong> Bài báo flagship xuất bản bởi Oxford University Press, nhận được lượng trích dẫn khổng lồ từ giới học thuật quốc tế.<br><br><strong>Ứng dụng học thuật:</strong> Minh chứng toàn diện về rủi ro phân hóa phân cực chính trị do thuật toán mạng xã hội gây ra." },
-            { id: 8, title: "Online Political Engagement", author: "Kahne & Bowyer (2018)", category: "youth", journal: "journal", rating: 4, citations: "Phù hợp chủ đề trực tiếp", publisher: "Taylor & Francis", desc: "Chứng minh tầm quan trọng của việc rèn luyện tư duy phản biện ngôn ngữ khi tiếp cận thông tin chính trị trực tuyến.", evaluation: "<strong>Đánh giá khoa học:</strong> Đăng trên tạp chí học thuật chính thống của Taylor & Francis. Được bình duyệt chặt chẽ bởi các chuyên gia đầu ngành truyền thông.<br><br><strong>Ứng dụng học thuật:</strong> Làm luận cứ chứng minh kỹ năng ngôn ngữ học và tư duy phản biện giúp giới trẻ tự vệ trước tin tức giả mạo." },
-            { id: 9, title: "Gen Z and Politics", author: "BBC News (2022)", category: "youth", journal: "media", rating: 3, citations: "Nguồn phổ thông", publisher: "BBC News Agency", desc: "Phù hợp để làm tư liệu bối cảnh hoặc tin tức tham khảo thực tế xã hội nhanh, không mang tính học thuật nghiên cứu sâu.", evaluation: "<strong>Đánh giá khoa học:</strong> Tin tức báo chí đại chúng từ hãng thông tấn uy tín BBC. Thiếu đi các đánh giá khoa học chuyên sâu hoặc bình duyệt hàn lâm.<br><br><strong>Ứng dụng học thuật:</strong> Chỉ nên sử dụng làm nguồn dẫn chứng mô tả bối cảnh xã hội tức thời hoặc lấy ví dụ thực tiễn sinh động." },
-            { id: 10, title: "Digital Activism", author: "Journal of Communication (2020)", category: "democracy", journal: "journal", rating: 5, citations: "Học thuật tinh hoa", publisher: "ICA - International Communication", desc: "Phân tích tác động trực tiếp của các hoạt động kêu gọi trực tuyến đối với việc thay đổi nhận thức hành vi thực tế xã hội.", evaluation: "<strong>Đánh giá khoa học:</strong> Tạp chí Journal of Communication là tạp chí học thuật hàng đầu thế giới về lĩnh vực truyền thông số. Lý thuyết sắc bén, lập luận khoa học chặt chẽ.<br><br><strong>Ứng dụng học thuật:</strong> Sử dụng để giải thích cơ chế chuyển biến nhận thức chính trị trực tuyến sang hành vi cụ thể ngoài đời thực." }
+            { id: 8, title: "Online Political Engagement", author: "Kahne & Bowyer (2018)", category: "youth", journal: "journal", rating: 4, citations: "Phù hợp chủ đề trực tiếp", publisher: "Taylor & Francis", desc: "Chứng minh tầm quan trọng của việc rèn luyện tư duy phản biện ngôn ngữ khi tiếp cận thông tin chính trị trực tuyến.", evaluation: "<strong>Đánh giá khoa học:</strong> Đăng trên tạp chí học thuật chính thống của Taylor & Francis. Được bình duyệt chặt chẽ bởi các chuyên gia đầu ngành truyền thông.<br><br><strong>Ứng dụng học thuật:</strong> Làm luận cứ chứng minh kỹ năng ngôn ngữ học và tư duy phản biện giúp giới trẻ tự vệ trước tin tức giả mạo." }
         ];
 
         function filterSources(filterType) {
