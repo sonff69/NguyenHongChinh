@@ -575,7 +575,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 550px; /* Fixed uniform height to prevent cropping and alignment bugs */
+            height: 550px; /* Chiều cao cố định đồng nhất để tránh các lỗi lệch khung hình khi cuộn */
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
             position: relative;
         }
@@ -619,6 +619,7 @@
             font-size: 0.85rem;
             background: #1c1a24;
             color: #d1cfd6;
+            min-height: 0;
         }
 
         .explorer-toolbar {
@@ -649,11 +650,12 @@
         .explorer-body {
             display: flex;
             flex: 1;
-            min-height: 0; /* Important to enforce inner scrolling */
+            min-height: 0; /* Cho phép các thành phần bên trong cuộn khi tràn */
         }
 
+        /* Tăng chiều rộng cột sidebar lên 235px để tránh triệt để lỗi tràn và cắt chữ sơ đồ thư mục */
         .explorer-sidebar {
-            width: 150px;
+            width: 235px;
             background: #16141e;
             border-right: 1px solid #2d293b;
             padding: 10px;
@@ -661,6 +663,7 @@
             flex-direction: column;
             gap: 8px;
             overflow-y: auto;
+            flex-shrink: 0;
         }
 
         .sidebar-item {
@@ -695,7 +698,7 @@
             font-size: 0.8rem;
         }
 
-        /* Fixed file wrapping grid to stop stretching bug */
+        /* Sắp xếp grid tệp tin tối ưu để triệt tiêu lỗi kéo giãn theo chiều dọc */
         .files-grid {
             display: flex;
             flex-wrap: wrap;
@@ -706,7 +709,7 @@
             overflow-y: auto;
         }
 
-        /* Fixed sizing properties to align file cards cleanly */
+        /* Giới hạn kích thước cố định để tệp tin không bị giãn */
         .file-icon {
             display: flex;
             flex-direction: column;
@@ -756,16 +759,27 @@
             justify-content: space-between;
         }
 
-        /* Folder tree graphic visualization styles */
+        /* Thêm thuộc tính cuộn ngang tự động và giữ dòng không ngắt để triệt tiêu hoàn toàn lỗi cắt chữ sơ đồ cây */
         .directory-tree {
             padding: 10px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.8rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.72rem;
             color: var(--text-muted);
             margin-top: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        /* Thanh cuộn ngang siêu mỏng cho sơ đồ thư mục */
+        .directory-tree::-webkit-scrollbar {
+            height: 4px;
+        }
+        .directory-tree::-webkit-scrollbar-thumb {
+            background: rgba(157, 78, 221, 0.2);
+            border-radius: 2px;
         }
 
         .tree-node {
@@ -788,7 +802,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            overflow: hidden; /* Important to encapsulate dynamic result-lists */
+            overflow: hidden; /* Ngăn chặn việc cuộn toàn khung gây tràn */
             height: calc(100% - 45px);
         }
 
@@ -830,7 +844,7 @@
             border-color: var(--secondary-glow);
         }
 
-        /* Inner container with scrolling viewport to fix overlap bugs */
+        /* Thêm khung cuộn dọc độc lập cho danh sách học liệu để triệt tiêu lỗi đè lấn nền và mất góc */
         .source-results {
             display: flex;
             flex-direction: column;
@@ -955,7 +969,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             flex: 1;
-            min-height: 0; /* Crucial block allowing children to compute overflow values and auto scroll */
+            min-height: 0; /* Ép buộc tính toán vùng cuộn bên trong cho các hộp phản hồi */
         }
 
         .output-box {
@@ -1094,7 +1108,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             cursor: pointer;
             transition: var(--transition-smooth);
-            transform: scale(0.9); /* Rescale mockup bounds seamlessly to align with uniform height values */
+            transform: scale(0.9); /* Thu nhỏ tỉ lệ tinh tế để khớp đẹp đẽ với chiều cao mô phỏng */
         }
 
         .infographic-preview-layout:hover {
