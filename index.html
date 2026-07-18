@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio - Nguyễn Hồng Chinh</title>
-    <!-- Google Fonts (Be Vietnam Pro supports Vietnamese flawlessly) & Font Awesome -->
+    <!-- Google Fonts (Be Vietnam Pro hỗ trợ hiển thị tiếng Việt hoàn hảo) & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -23,7 +23,7 @@
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Reset & Global Styles with flawless Vietnamese font rendering */
+        /* Reset & Global Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -32,7 +32,7 @@
         }
 
         body {
-            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
             background-color: #0b0813;
             background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('back.jpg');
             background-size: cover;
@@ -444,34 +444,33 @@
             box-shadow: 0 4px 15px rgba(157, 78, 221, 0.25);
         }
 
-        /* Detailed Assignment Panels - Fixed Absolute Position Clipping Bug */
+        /* Detailed Assignment Panels */
         .tabs-viewport {
-            width: 100%;
             position: relative;
+            min-height: 600px;
         }
 
         .assignment-panel {
-            display: none; /* Changed from position:absolute to display:none to fix overflow clipping completely */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            display: grid;
             grid-template-columns: 1.15fr 1fr;
             gap: 35px;
-            width: 100%;
+            pointer-events: none;
         }
 
         .assignment-panel.active {
-            display: grid;
-            animation: tabFadeIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
             pointer-events: auto;
-        }
-
-        @keyframes tabFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .assignment-meta {
@@ -576,7 +575,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 520px;
+            height: 550px; /* Fixed height to keep layout stable and elegant */
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
             position: relative;
         }
@@ -694,13 +693,12 @@
             font-size: 0.8rem;
         }
 
-        /* Fixed file icon horizontal/vertical stretching completely */
         .files-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            grid-auto-rows: max-content;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-auto-rows: max-content; /* This prevents the row from stretching vertically! */
+            align-content: start; /* Align rows to the top */
             gap: 15px;
-            align-items: start;
             flex: 1;
         }
 
@@ -715,8 +713,6 @@
             border-radius: 4px;
             border: 1px solid transparent;
             transition: var(--transition-smooth);
-            height: fit-content;
-            align-self: start;
         }
 
         .file-icon:hover {
@@ -770,12 +766,11 @@
             flex: 1;
             background: #16141e;
             padding: 20px;
-            padding-bottom: 40px; /* Added padding bottom to prevent lists cut-off */
             display: flex;
             flex-direction: column;
             gap: 15px;
             overflow-y: auto;
-            max-height: 500px;
+            max-height: 480px;
         }
 
         .search-bar-widget {
@@ -1175,7 +1170,7 @@
             align-items: start;
         }
 
-        .reflection-narrative glass-panel {
+        .reflection-narrative {
             padding: 40px;
             display: flex;
             flex-direction: column;
@@ -1430,7 +1425,7 @@
 
             <div class="tabs-viewport">
                 <!-- BÀI 1 PANEL -->
-                <div id="proj1" class="assignment-panel active">
+                <div id="proj1" class="assignment-panel active glass-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 1 của mục 1.4</span>Thao Tác Cơ Bản Với Tệp Tin Và Thư Mục</h3>
                         <div class="meta-pills">
@@ -1510,7 +1505,7 @@
                 </div>
 
                 <!-- BÀI 2 PANEL -->
-                <div id="proj2" class="assignment-panel">
+                <div id="proj2" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 2 của mục 2.4</span>Tìm Kiếm & Đánh Giá Thông Tin Học Thuật Bằng Các Toán Tử Nâng Cao</h3>
                         <div class="meta-pills">
@@ -1550,7 +1545,7 @@
                         </div>
                         <div class="source-sim">
                             <div class="search-bar-widget">
-                                <input type="text" class="search-input-mock" id="sim-search-input" placeholder="Nhấp vào từng thẻ tài liệu bên dưới để xem THẨM ĐỊNH CHI TIẾT..." readonly>
+                                <input type="text" class="search-input-mock" id="sim-search-input" placeholder="Nhập từ khóa hoặc nhấp vào các thẻ gợi ý bên dưới để lọc..." readonly>
                             </div>
                             <div class="suggest-chips">
                                 <button class="chip-btn active" onclick="filterSources('all')">Tất cả</button>
@@ -1577,7 +1572,7 @@
                 </div>
 
                 <!-- BÀI 3 PANEL -->
-                <div id="proj3" class="assignment-panel">
+                <div id="proj3" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 2 của mục 3.4</span>Viết Prompt Hiệu Quả Cho Các Tác Vụ Học Tập</h3>
                         <div class="meta-pills">
@@ -1641,7 +1636,7 @@
                 </div>
 
                 <!-- BÀI 4 PANEL -->
-                <div id="proj4" class="assignment-panel">
+                <div id="proj4" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 3 của mục 4.4</span>Sử Dụng Công Cụ Hợp Tác Trực Tuyến Cho Dự Án Nhóm</h3>
                         <div class="meta-pills">
@@ -1699,7 +1694,7 @@
                 </div>
 
                 <!-- BÀI 5 PANEL -->
-                <div id="proj5" class="assignment-panel">
+                <div id="proj5" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 2 của mục 5.4</span>Sử Dụng Công Cụ AI Tạo Sinh Để Hỗ Trợ Sáng Tạo Nội Dung</h3>
                         <div class="meta-pills">
@@ -1769,7 +1764,7 @@
                 </div>
 
                 <!-- BÀI 6 PANEL -->
-                <div id="proj6" class="assignment-panel">
+                <div id="proj6" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
                         <h3><span>Bài tập 4 của mục 6.4</span>Sử Dụng AI Có Trách Nhiệm Trong Học Tập Và Nghiên Cứu</h3>
                         <div class="meta-pills">
@@ -2027,7 +2022,7 @@
         }
         setTimeout(runTyping, 800);
 
-        /* Tab Switch Control with slide transition - Fixed Absolute Height Overlap completely */
+        /* Tab Switch Control with slide transition */
         function switchTabs(evt, tabId) {
             const panels = document.getElementsByClassName('assignment-panel');
             for (let i = 0; i < panels.length; i++) {
