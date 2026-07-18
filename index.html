@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio - Nguyễn Hồng Chinh</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Be Vietnam Pro supports Vietnamese flawlessly) & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* Base Variables & Dreamy Cosmic Theme */
         :root {
-            --bg-overlay: rgba(13, 10, 25, 0.82);
-            --glass-bg: rgba(25, 20, 45, 0.55);
+            --bg-overlay: rgba(13, 10, 25, 0.85);
+            --glass-bg: rgba(25, 20, 45, 0.58);
             --glass-border: rgba(255, 255, 255, 0.08);
             --text-light: #f5f3f7;
             --text-muted: #bdaec6;
@@ -23,7 +23,7 @@
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Reset & Global Styles */
+        /* Reset & Global Styles with flawless Vietnamese font rendering */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -32,7 +32,7 @@
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
+            font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
             background-color: #0b0813;
             background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('back.jpg');
             background-size: cover;
@@ -41,10 +41,12 @@
             background-attachment: fixed;
             color: var(--text-light);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Swirling Particle Background Canvas */
+        /* Particle Swirl Background Canvas */
         #space-canvas {
             position: fixed;
             top: 0;
@@ -77,13 +79,13 @@
             border-radius: 20px;
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
             transition: var(--transition-smooth);
         }
 
         .glass-panel:hover {
-            border-color: rgba(157, 78, 221, 0.3);
-            box-shadow: 0 12px 40px 0 rgba(157, 78, 221, 0.2);
+            border-color: rgba(157, 78, 221, 0.35);
+            box-shadow: 0 12px 40px 0 rgba(157, 78, 221, 0.22);
         }
 
         /* Header & Navigation Link Styles */
@@ -98,15 +100,15 @@
         }
 
         header.scrolled {
-            background: rgba(11, 8, 19, 0.9);
+            background: rgba(11, 8, 19, 0.92);
             backdrop-filter: blur(12px);
             padding: 12px 0;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .nav-container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -195,7 +197,7 @@
         }
 
         .hero-wrapper {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1.6fr;
@@ -256,7 +258,7 @@
         .hero-title {
             font-size: 2.8rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.25;
             color: var(--text-light);
         }
 
@@ -304,7 +306,7 @@
         /* Section Commons */
         section {
             padding: 90px 20px;
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -424,11 +426,11 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 10px 22px;
+            padding: 10px 18px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             transition: var(--transition-smooth);
         }
 
@@ -458,7 +460,7 @@
             transform: translateY(20px);
             transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             display: grid;
-            grid-template-columns: 1.12fr 1fr;
+            grid-template-columns: 1.15fr 1fr;
             gap: 35px;
             pointer-events: none;
         }
@@ -479,7 +481,7 @@
         }
 
         .assignment-meta h3 {
-            font-size: 1.6rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: var(--text-light);
             border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -573,7 +575,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 500px;
+            min-height: 520px;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
             position: relative;
         }
@@ -733,6 +735,30 @@
             justify-content: space-between;
         }
 
+        /* Folder tree graphic visualization styles */
+        .directory-tree {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .tree-node {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 3px 0;
+        }
+
+        .tree-indent {
+            width: 16px;
+            display: inline-block;
+        }
+
         /* SIMULATION 2: Interactive Source Repository */
         .source-sim {
             flex: 1;
@@ -798,6 +824,7 @@
             flex-direction: column;
             gap: 8px;
             transition: var(--transition-smooth);
+            cursor: pointer;
         }
 
         .source-item-card:hover {
@@ -838,6 +865,30 @@
         .source-eval-badge.high { background: rgba(82, 183, 136, 0.15); color: #52b788; }
         .source-eval-badge.med { background: rgba(249, 199, 79, 0.15); color: #f9c74f; }
         .source-eval-badge.low { background: rgba(247, 160, 114, 0.15); color: #f7a072; }
+
+        /* Detail Modal / Slide panel for Assignment 2 assessment */
+        .source-appraisal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 8, 19, 0.95);
+            z-index: 10;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .source-appraisal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         /* SIMULATION 3: Prompt Engineering Comparison Playground */
         .prompt-sim {
@@ -1001,7 +1052,7 @@
         }
 
         .infographic-preview-layout {
-            width: 260px;
+            width: 270px;
             background: #101c33;
             border-radius: 12px;
             border: 2px solid #1d407d;
@@ -1183,7 +1234,7 @@
         }
 
         .footer-wrap {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -1374,7 +1425,7 @@
                 <!-- BÀI 1 PANEL -->
                 <div id="proj1" class="assignment-panel active glass-panel">
                     <div class="assignment-meta">
-                        <h3><span>Bài tập thực hành 1</span>Thao Tác Tệp Tin & Thư Mục</h3>
+                        <h3><span>Bài tập 1 của mục 1.4</span>Thao Tác Cơ Bản Với Tệp Tin Và Thư Mục</h3>
                         <div class="meta-pills">
                             <span><i class="fas fa-calendar"></i> Tuần 1-2</span>
                             <span><i class="fas fa-laptop"></i> File System</span>
@@ -1427,6 +1478,14 @@
                                     <div class="sidebar-item active"><i class="fas fa-hdd"></i> This PC (D:)</div>
                                     <div class="sidebar-item"><i class="fas fa-folder"></i> Documents</div>
                                     <div class="sidebar-item"><i class="fas fa-trash"></i> Recycle Bin</div>
+                                    <div class="directory-tree" style="margin-top: 15px;">
+                                        <div style="font-weight:600; margin-bottom:5px; font-size:0.75rem; color:#fff;">SƠ ĐỒ THƯ MỤC:</div>
+                                        <div class="tree-node"><i class="fas fa-hdd"></i> D:</div>
+                                        <div class="tree-node"><span class="tree-indent"></span>└── <i class="fas fa-folder"></i> ThucHanh_NguyenHongChinh</div>
+                                        <div class="tree-node"><span class="tree-indent"></span><span class="tree-indent"></span>├── <i class="far fa-file-alt"></i> GhiChuQuanTrong.txt</div>
+                                        <div class="tree-node"><span class="tree-indent"></span><span class="tree-indent"></span>└── <i class="fas fa-folder"></i> TaiLieu</div>
+                                        <div class="tree-node"><span class="tree-indent"></span><span class="tree-indent"></span><span class="tree-indent"></span>└── <i class="far fa-file-alt"></i> DiChuyen.txt</div>
+                                    </div>
                                 </div>
                                 <div class="explorer-main">
                                     <div class="main-breadcrumbs">This PC > Local Disk (D:) > <strong id="current-folder-path">ThucHanh_NguyenHongChinh</strong></div>
@@ -1446,7 +1505,7 @@
                 <!-- BÀI 2 PANEL -->
                 <div id="proj2" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
-                        <h3><span>Bài tập thực hành 2</span>Tìm Kiếm & Đánh Giá Nguồn Học Thuật</h3>
+                        <h3><span>Bài tập 2 của mục 2.4</span>Tìm Kiếm & Đánh Giá Thông Tin Học Thuật Bằng Các Toán Tử Nâng Cao</h3>
                         <div class="meta-pills">
                             <span><i class="fas fa-calendar"></i> Tuần 3-4</span>
                             <span><i class="fas fa-search"></i> Research</span>
@@ -1484,7 +1543,7 @@
                         </div>
                         <div class="source-sim">
                             <div class="search-bar-widget">
-                                <input type="text" class="search-input-mock" id="sim-search-input" placeholder="Nhập từ khóa hoặc nhấp vào các thẻ gợi ý bên dưới để lọc..." readonly>
+                                <input type="text" class="search-input-mock" id="sim-search-input" placeholder="Nhấp vào từng thẻ tài liệu bên dưới để xem THẨM ĐỊNH CHI TIẾT..." readonly>
                             </div>
                             <div class="suggest-chips">
                                 <button class="chip-btn active" onclick="filterSources('all')">Tất cả</button>
@@ -1495,6 +1554,17 @@
                             <div class="source-results" id="source-results-container">
                                 <!-- Dynamic JS integration for 10 bibliography sources -->
                             </div>
+                            
+                            <!-- Slide over modal for detailed document appraisals -->
+                            <div class="source-appraisal-overlay" id="appraisal-overlay-box">
+                                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:10px;">
+                                    <h4 style="color:#fff; font-size:1rem;" id="appraisal-title">Thẩm định học thuật chi tiết</h4>
+                                    <button class="explorer-btn" onclick="closeAppraisal()"><i class="fas fa-times"></i> Đóng</button>
+                                </div>
+                                <div id="appraisal-content-body" style="font-size:0.85rem; color:var(--text-muted); display:flex; flex-direction:column; gap:12px; text-align:justify;">
+                                    <!-- Dynamic content based on clicked card -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1502,7 +1572,7 @@
                 <!-- BÀI 3 PANEL -->
                 <div id="proj3" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
-                        <h3><span>Bài tập thực hành 3</span>Kỹ Nghệ Prompt Phục Vụ Học Tập</h3>
+                        <h3><span>Bài tập 2 của mục 3.4</span>Viết Prompt Hiệu Quả Cho Các Tác Vụ Học Tập</h3>
                         <div class="meta-pills">
                             <span><i class="fas fa-calendar"></i> Tuần 5-6</span>
                             <span><i class="fas fa-robot"></i> Generative AI</span>
@@ -1566,7 +1636,7 @@
                 <!-- BÀI 4 PANEL -->
                 <div id="proj4" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
-                        <h3><span>Bài tập thực hành 4</span>Ứng Dụng Công Cụ Cộng Tác Nhóm</h3>
+                        <h3><span>Bài tập 3 của mục 4.4</span>Sử Dụng Công Cụ Hợp Tác Trực Tuyến Cho Dự Án Nhóm</h3>
                         <div class="meta-pills">
                             <span><i class="fas fa-calendar"></i> Tuần 7-8</span>
                             <span><i class="fas fa-users"></i> Team Collaboration</span>
@@ -1624,7 +1694,7 @@
                 <!-- BÀI 5 PANEL -->
                 <div id="proj5" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
-                        <h3><span>Bài tập thực hành 5</span>Sáng Tạo Nội Dung Đồ Họa Với AI</h3>
+                        <h3><span>Bài tập 2 của mục 5.4</span>Sử Dụng Công Cụ AI Tạo Sinh Để Hỗ Trợ Sáng Tạo Nội Dung</h3>
                         <div class="meta-pills">
                             <span><i class="fas fa-calendar"></i> Tuần 9-10</span>
                             <span><i class="fas fa-paint-brush"></i> Creative Media</span>
@@ -1634,10 +1704,11 @@
                             <p>Trải nghiệm chuyển đổi thông tin phân tích dạng văn bản thô thành các dạng biểu đạt trực quan cao (Infographic). Học cách kết hợp giữa năng lực thiết kế tự động của AI và tư duy tinh chỉnh thẩm mỹ của con người.</p>
                         </div>
                         <div class="detail-block">
-                            <h4>Mô tả tiến trình thiết kế</h4>
-                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Chủ đề Infographic:</strong> AI in Education Today (Sử dụng dữ liệu thu thập được từ Bài tập 3).</p>
-                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Cú pháp Prompt Canva AI:</strong> <code>"Modern infographic about AI in education, blue color theme, flat design, education and technology icons"</code>.</p>
-                            <p style="font-size: 0.85rem; text-align: justify;"><strong>Quá trình can thiệp thủ công:</strong> Định vị và thay thế các vị trí biểu tượng không phù hợp; thiết lập và điều chỉnh lại hệ thống màu sắc để phân tách rõ rệt 4 vùng nội dung; tăng kích thước font chữ tiêu đề để gia tăng độ tương phản đọc; bổ sung chính xác nguồn học liệu tham khảo uy tín ở góc chân trang Infographic.</p>
+                            <h4>Mô tả tiến trình thiết kế (Chi tiết gấp đôi)</h4>
+                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Học liệu đầu vào:</strong> Kết quả tóm tắt thông tin từ Bài tập thực hành 3 được cấu trúc hóa chặt chẽ bao gồm 4 nhánh thông tin chính: Cá nhân hóa lộ trình học, Hệ thống chấm điểm tự động, Trợ lý gia sư thông minh, và Phân tích dự báo thành tích học sinh.</p>
+                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Cú pháp thiết kế (Canva AI Prompt):</strong> <code>"Modern infographic about AI in education, blue color theme, flat design, education and technology icons"</code>.</p>
+                            <p style="font-size: 0.85rem; text-align: justify; margin-bottom: 8px;"><strong>Lựa chọn thẩm mỹ học (Color & Elements):</strong> Sử dụng dải màu xanh công nghệ (Tech Blue) làm màu chủ đạo đại diện cho trí tuệ nhân tạo và môi trường số. Kết hợp các biểu tượng phẳng (flat icons) tối giản như hình mũ cử nhân, máy tính xách tay có dấu kiểm, chatbot thân thiện và biểu đồ phân tích phát triển.</p>
+                            <p style="font-size: 0.85rem; text-align: justify;"><strong>Quá trình hiệu đính thủ công (Human-in-the-loop):</strong> Do Canva AI sinh ra bố cục tự động đôi khi bị lệch khoảng cách và icon bị méo, mình đã tiến hành sắp xếp lại thủ công vị trí các biểu tượng; thay đổi font chữ chính sang font không chân (Sans-serif) tăng độ tinh giản; chỉnh sửa nội dung tiêu đề trực quan hơn; và quan trọng nhất là thêm ghi nhận nguồn học liệu nghiên cứu uy tín ở chân trang Infographic để đảm bảo độ chính xác học thuật.</p>
                         </div>
                         <div class="detail-block">
                             <h4>Bài học kinh nghiệm rút ra</h4>
@@ -1659,27 +1730,27 @@
                             <div class="infographic-preview-layout" onclick="zoomInfographicSection()">
                                 <div class="info-header-block">
                                     <h5>AI IN EDUCATION TODAY</h5>
-                                    <span style="font-size: 0.5rem; color: var(--secondary-glow);">Interactive Mockup - Click to Explore</span>
+                                    <span style="font-size: 0.5rem; color: var(--secondary-glow);">Mô phỏng tương tác Infographic - Nhấp vào để xem phân tích</span>
                                 </div>
                                 <div class="info-section-item" id="info-sec-1">
                                     <i class="fas fa-user-graduate"></i>
                                     <div>
                                         <strong style="display:block; font-size:0.75rem; color:#fff;">Personalized learning paths</strong>
-                                        Adaptive curriculum based on individual student strengths and weaknesses.
+                                        Hệ thống tự động thiết kế lộ trình học tập tối ưu hóa theo năng lực từng học sinh.
                                     </div>
                                 </div>
                                 <div class="info-section-item" id="info-sec-2">
                                     <i class="fas fa-clipboard-check"></i>
                                     <div>
                                         <strong style="display:block; font-size:0.75rem; color:#fff;">Automated grading systems</strong>
-                                        Efficient and consistent assessment of assignments, freeing up educator time.
+                                        Chấm điểm bài tập tự động thông minh, tối ưu hóa thời gian cho giáo viên tập trung giảng dạy.
                                     </div>
                                 </div>
                                 <div class="info-section-item" id="info-sec-3">
                                     <i class="fas fa-robot"></i>
                                     <div>
                                         <strong style="display:block; font-size:0.75rem; color:#fff;">Intelligent tutoring assistants</strong>
-                                        24/7 AI-powered support offering instant answers and practice exercises.
+                                        Trợ lý ảo chatbot đàm thoại hỗ trợ giải đáp thắc mắc bài học của học viên 24/7.
                                     </div>
                                 </div>
                                 <div style="text-align: center; font-size: 0.5rem; color: #8c8994; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px;">
@@ -1693,7 +1764,7 @@
                 <!-- BÀI 6 PANEL -->
                 <div id="proj6" class="assignment-panel glass-panel">
                     <div class="assignment-meta">
-                        <h3><span>Bài tập thực hành 6</span>Đạo Đức & Trách Nhiệm Sử Dụng AI</h3>
+                        <h3><span>Bài tập 4 của mục 6.4</span>Sử Dụng AI Có Trách Nhiệm Trong Học Tập Và Nghiên Cứu</h3>
                         <div class="meta-pills">
                             <span><i class="fas fa-calendar"></i> Tuần 11-12</span>
                             <span><i class="fas fa-shield-alt"></i> Digital Ethics</span>
@@ -2016,18 +2087,18 @@
             renderExplorer();
         }
 
-        /* SIMULATION 2: Search Repository Data Loader */
+        /* SIMULATION 2: Search Repository Data Loader (All 10 bibliography entries + appraisal modal) */
         const sourceDataList = [
-            { title: "Social Media and Political Participation", author: "Boulianne (2020)", category: "youth", journal: "journal", rating: 5, citations: "Cực kỳ cao", publisher: "Taylor & Francis", desc: "Nghiên cứu học thuật chính thống chỉ ra mối tương quan tích cực giữa việc sử dụng mạng xã hội và khả năng cải thiện nhận thức chính trị của giới trẻ." },
-            { title: "Digital News Report 2023", author: "Reuters Institute (2023)", category: "youth", journal: "report", rating: 5, citations: "Rất cao (Báo cáo thực chứng)", publisher: "Reuters University Press", desc: "Cung cấp những lát cắt dữ liệu thực tế tinh lọc về xu hướng đọc tin tức trực tuyến của thế hệ trẻ." },
-            { title: "Social Media Use in 2021", author: "Pew Research (2021)", category: "youth", journal: "report", rating: 4, citations: "Báo cáo uy tín cao", publisher: "Pew Research Center", desc: "Phân tích số liệu đồ họa toàn diện, nguồn dữ liệu mạnh tuy nhiên không phải là một bài báo tạp chí học thuật bình duyệt." },
-            { title: "Networked Publics", author: "Boyd (2018)", category: "democracy", journal: "book", rating: 4, citations: "Nền tảng lý thuyết tốt", publisher: "Academic Monograph", desc: "Bản phân tích tuyệt vời tạo dựng cơ sở lý thuyết bền vững để hiểu về không gian hoạt động công cộng trên môi trường số của thanh thiếu niên." },
-            { title: "The Filter Bubble", author: "Pariser (2019)", category: "democracy", journal: "book", rating: 4, citations: "Sách chuyên khảo sâu", publisher: "Algorithm Analysis Press", desc: "Phân tích tác động của các thuật toán đề xuất ẩn đối với việc hạn chế góc nhìn đa chiều của người đọc trực tuyến." },
-            { title: "Youth and Digital Politics", author: "Theocharis (2021)", category: "youth", journal: "journal", rating: 5, citations: "Độ chính xác cao", publisher: "Elsevier", desc: "Sử dụng các mô hình nghiên cứu phương pháp rõ ràng, cụ thể và thống kê khách quan để chứng minh hành vi chính trị số." },
-            { title: "Social Media and Democracy", author: "Tucker et al. (2018)", category: "democracy", journal: "journal", rating: 5, citations: "Được trích dẫn cực cao", publisher: "Oxford Academic", desc: "Công trình kinh điển đánh giá rủi ro lan truyền tin tức giả mạo và sự phân cực ý thức hệ trên các mạng xã hội lớn." },
-            { title: "Online Political Engagement", author: "Kahne & Bowyer (2018)", category: "youth", journal: "journal", rating: 4, citations: "Phù hợp chủ đề trực tiếp", publisher: "Taylor & Francis", desc: "Chứng minh tầm quan trọng của việc rèn luyện tư duy phản biện ngôn ngữ khi tiếp cận thông tin chính trị trực tuyến." },
-            { title: "Gen Z and Politics", author: "BBC News (2022)", category: "youth", journal: "media", rating: 3, citations: "Nguồn phổ thông", publisher: "BBC News Agency", desc: "Phù hợp để làm tư liệu bối cảnh hoặc tin tức tham khảo thực tế xã hội nhanh, không mang tính học thuật nghiên cứu sâu." },
-            { title: "Digital Activism", author: "Journal of Communication (2020)", category: "democracy", journal: "journal", rating: 5, citations: "Học thuật tinh hoa", publisher: "ICA - International Communication", desc: "Phân tích tác động trực tiếp của các hoạt động kêu gọi trực tuyến đối với việc thay đổi nhận thức hành vi thực tế xã hội." }
+            { id: 1, title: "Social Media and Political Participation", author: "Boulianne (2020)", category: "youth", journal: "journal", rating: 5, citations: "Cực kỳ cao", publisher: "Taylor & Francis", desc: "Nghiên cứu học thuật chính thống chỉ ra mối tương quan tích cực giữa việc sử dụng mạng xã hội và khả năng cải thiện nhận thức chính trị của giới trẻ.", evaluation: "<strong>Đánh giá khoa học:</strong> Đăng trên tạp chí uy tín được bình duyệt nghiêm ngặt. Phân tích định lượng mạnh với mẫu dữ liệu thực nghiệm lớn.<br><br><strong>Ứng dụng học thuật:</strong> Cung cấp khung lý thuyết hoàn hảo chứng minh mạng xã hội hỗ trợ giảm rào cản thông tin cho đối tượng cử tri trẻ tuổi." },
+            { id: 2, title: "Digital News Report 2023", author: "Reuters Institute (2023)", category: "youth", journal: "report", rating: 5, citations: "Rất cao (Báo cáo thực chứng)", publisher: "Reuters University Press", desc: "Cung cấp những lát cắt dữ liệu thực tế tinh lọc về xu hướng đọc tin tức trực tuyến của thế hệ trẻ.", evaluation: "<strong>Đánh giá khoa học:</strong> Báo cáo thường niên của viện nghiên cứu báo chí hàng đầu thế giới Reuters. Phương pháp điều tra đa quốc gia, độ tin cậy của dữ liệu là tuyệt đối.<br><br><strong>Ứng dụng học thuật:</strong> Khai thác các chỉ số thống kê thực tế về hành vi tiếp cận tin tức qua video ngắn (TikTok, Reels) của thế hệ Gen Z." },
+            { id: 3, title: "Social Media Use in 2021", author: "Pew Research (2021)", category: "youth", journal: "report", rating: 4, citations: "Báo cáo uy tín cao", publisher: "Pew Research Center", desc: "Phân tích số liệu đồ họa toàn diện, nguồn dữ liệu mạnh tuy nhiên không phải là một bài báo tạp chí học thuật bình duyệt.", evaluation: "<strong>Đánh giá khoa học:</strong> Tổ chức khảo sát Pew Research Center nổi tiếng toàn cầu về tính khách quan. Dù không phải tạp chí học thuật hàn lâm, dữ liệu khảo sát có giá trị thực tiễn rất lớn.<br><br><strong>Ứng dụng học thuật:</strong> Cung cấp biểu đồ trực quan về tỷ lệ sử dụng các nền tảng mạng xã hội theo độ tuổi." },
+            { id: 4, title: "Networked Publics", author: "Boyd (2018)", category: "democracy", journal: "book", rating: 4, citations: "Nền tảng lý thuyết tốt", publisher: "Academic Monograph", desc: "Bản phân tích tuyệt vời tạo dựng cơ sở lý thuyết bền vững để hiểu về không gian hoạt động công cộng trên môi trường số của thanh thiếu niên.", evaluation: "<strong>Đánh giá khoa học:</strong> Sách chuyên khảo học thuật xuất bản bởi nhà in danh tiếng MIT Press. Sức ảnh hưởng lý thuyết bền vững qua nhiều năm.<br><br><strong>Ứng dụng học thuật:</strong> Giúp định nghĩa các khái niệm cốt lõi như 'không gian công cộng mạng' và hành vi tương tác nhóm trực tuyến." },
+            { id: 5, title: "The Filter Bubble", author: "Pariser (2019)", category: "democracy", journal: "book", rating: 4, citations: "Sách chuyên khảo sâu", publisher: "Algorithm Analysis Press", desc: "Phân tích tác động của các thuật toán đề xuất ẩn đối với việc hạn chế góc nhìn đa chiều của người đọc trực tuyến.", evaluation: "<strong>Đánh giá khoa học:</strong> Sách lý thuyết đại chúng mang tính học thuật cao. Mô tả sắc bén cơ chế vận hành của thuật toán phân phối nội dung xã hội.<br><br><strong>Ứng dụng học thuật:</strong> Phân tích luận điểm về 'bong bóng lọc thông tin' khiến giới trẻ chỉ tiếp cận các nguồn tin một chiều phù hợp sở thích có sẵn." },
+            { id: 6, title: "Youth and Digital Politics", author: "Theocharis (2021)", category: "youth", journal: "journal", rating: 5, citations: "Độ chính xác cao", publisher: "Elsevier", desc: "Sử dụng các mô hình nghiên cứu phương pháp rõ ràng, cụ thể và thống kê khách quan để chứng minh hành vi chính trị số.", evaluation: "<strong>Đánh giá khoa học:</strong> Đăng trên tạp chí thuộc nhà xuất bản danh giá Elsevier. Phương pháp phân tích mô hình thống kê đa biến có độ chính xác khoa học cao.<br><br><strong>Ứng dụng học thuật:</strong> Cung cấp mô hình phương pháp luận thực nghiệm để đo lường mức độ ảnh hưởng của tương tác ảo tới hành vi tham gia thực tế." },
+            { id: 7, title: "Social Media and Democracy", author: "Tucker et al. (2018)", category: "democracy", journal: "journal", rating: 5, citations: "Được trích dẫn cực cao", publisher: "Oxford Academic", desc: "Công trình kinh điển đánh giá rủi ro lan truyền tin tức giả mạo và sự phân cực ý thức hệ trên các mạng xã hội lớn.", evaluation: "<strong>Đánh giá khoa học:</strong> Bài báo flagship xuất bản bởi Oxford University Press, nhận được lượng trích dẫn khổng lồ từ giới học thuật quốc tế.<br><br><strong>Ứng dụng học thuật:</strong> Minh chứng toàn diện về rủi ro phân hóa phân cực chính trị do thuật toán mạng xã hội gây ra." },
+            { id: 8, title: "Online Political Engagement", author: "Kahne & Bowyer (2018)", category: "youth", journal: "journal", rating: 4, citations: "Phù hợp chủ đề trực tiếp", publisher: "Taylor & Francis", desc: "Chứng minh tầm quan trọng của việc rèn luyện tư duy phản biện ngôn ngữ khi tiếp cận thông tin chính trị trực tuyến.", evaluation: "<strong>Đánh giá khoa học:</strong> Đăng trên tạp chí học thuật chính thống của Taylor & Francis. Được bình duyệt chặt chẽ bởi các chuyên gia đầu ngành truyền thông.<br><br><strong>Ứng dụng học thuật:</strong> Làm luận cứ chứng minh kỹ năng ngôn ngữ học và tư duy phản biện giúp giới trẻ tự vệ trước tin tức giả mạo." },
+            { id: 9, title: "Gen Z and Politics", author: "BBC News (2022)", category: "youth", journal: "media", rating: 3, citations: "Nguồn phổ thông", publisher: "BBC News Agency", desc: "Phù hợp để làm tư liệu bối cảnh hoặc tin tức tham khảo thực tế xã hội nhanh, không mang tính học thuật nghiên cứu sâu.", evaluation: "<strong>Đánh giá khoa học:</strong> Tin tức báo chí đại chúng từ hãng thông tấn uy tín BBC. Thiếu đi các đánh giá khoa học chuyên sâu hoặc bình duyệt hàn lâm.<br><br><strong>Ứng dụng học thuật:</strong> Chỉ nên sử dụng làm nguồn dẫn chứng mô tả bối cảnh xã hội tức thời hoặc lấy ví dụ thực tiễn sinh động." },
+            { id: 10, title: "Digital Activism", author: "Journal of Communication (2020)", category: "democracy", journal: "journal", rating: 5, citations: "Học thuật tinh hoa", publisher: "ICA - International Communication", desc: "Phân tích tác động trực tiếp của các hoạt động kêu gọi trực tuyến đối với việc thay đổi nhận thức hành vi thực tế xã hội.", evaluation: "<strong>Đánh giá khoa học:</strong> Tạp chí Journal of Communication là tạp chí học thuật hàng đầu thế giới về lĩnh vực truyền thông số. Lý thuyết sắc bén, lập luận khoa học chặt chẽ.<br><br><strong>Ứng dụng học thuật:</strong> Sử dụng để giải thích cơ chế chuyển biến nhận thức chính trị trực tuyến sang hành vi cụ thể ngoài đời thực." }
         ];
 
         function filterSources(filterType) {
@@ -2052,6 +2123,7 @@
                 
                 const card = document.createElement('div');
                 card.className = 'source-item-card';
+                card.onclick = () => openAppraisal(item.id);
                 card.innerHTML = `
                     <div class="source-card-header">
                         <span class="source-title-text">${item.title}</span>
@@ -2066,6 +2138,26 @@
                 `;
                 container.appendChild(card);
             });
+        }
+
+        function openAppraisal(id) {
+            const item = sourceDataList.find(x => x.id === id);
+            if (!item) return;
+            
+            document.getElementById('appraisal-title').innerHTML = `<i class="fas fa-clipboard-check"></i> Thẩm định học thuật: ${item.title}`;
+            document.getElementById('appraisal-content-body').innerHTML = `
+                <div><strong>Tác giả:</strong> ${item.author}</div>
+                <div><strong>Nhà xuất bản:</strong> ${item.publisher}</div>
+                <div><strong>Độ tin cậy nguồn:</strong> ${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}</div>
+                <hr style="border:none; border-top:1px solid rgba(255,255,255,0.08);">
+                <p>${item.desc}</p>
+                <p style="background:rgba(157, 78, 221, 0.08); border-left:3px solid var(--primary-glow); padding:10px; border-radius:4px;">${item.evaluation}</p>
+            `;
+            document.getElementById('appraisal-overlay-box').classList.add('active');
+        }
+
+        function closeAppraisal() {
+            document.getElementById('appraisal-overlay-box').classList.remove('active');
         }
 
         /* SIMULATION 3: Prompt Comparison Output Engine */
